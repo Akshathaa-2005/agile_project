@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  frontend:
+    image: akshathaa16/swiftbites-frontend:latest
+    platform: linux/amd64
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+  backend:
+    image: akshathaa16/swiftbites-backend:latest
+    platform: linux/amd64
+    ports:
+      - "4000:4000"
+    environment:
+      - PORT=4000
+      # Add any other environment variables your backend needs
+
+  admin:
+    image: akshathaa16/swiftbites-admin:latest
+    platform: linux/amd64
+    ports:
+      - "5174:5174"
+    depends_on:
+      - backend
