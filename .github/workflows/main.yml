@@ -3,7 +3,7 @@ name: MERN Test Pipeline
 on: [push, pull_request]
 
 env:
-  DOCKERHUB_USERNAME: ${{ vars.DOCKERHUB_USERNAME }}
+  DOCKERHUB_USERNAME: ${{ vars.akshathaa16 }}
   IMAGE_PREFIX: swiftbites
 
 jobs:
@@ -74,6 +74,6 @@ jobs:
       with:
         context: ./${{ matrix.project }}
         push: true
-        tags: ${{ vars.DOCKERHUB_USERNAME }}/${{ env.IMAGE_PREFIX }}-${{ matrix.project }}:latest,${{ vars.DOCKERHUB_USERNAME }}/${{ env.IMAGE_PREFIX }}-${{ matrix.project }}:${{ github.sha }}
-        cache-from: type=registry,ref=${{ vars.DOCKERHUB_USERNAME }}/${{ env.IMAGE_PREFIX }}-${{ matrix.project }}:buildcache
-        cache-to: type=registry,ref=${{ vars.DOCKERHUB_USERNAME }}/${{ env.IMAGE_PREFIX }}-${{ matrix.project }}:buildcache,mode=max
+        tags: ${{ vars.akshathaa16 }}/${{ env.IMAGE_PREFIX }}-${{ matrix.project }}:latest,${{ vars.akshathaa16 }}/${{ env.IMAGE_PREFIX }}-${{ matrix.project }}:${{ github.sha }}
+        cache-from: type=registry,ref=${{ vars.akshathaa16 }}/${{ env.IMAGE_PREFIX }}-${{ matrix.project }}:buildcache
+        cache-to: type=registry,ref=${{ vars.akshathaa16 }}/${{ env.IMAGE_PREFIX }}-${{ matrix.project }}:buildcache,mode=max
