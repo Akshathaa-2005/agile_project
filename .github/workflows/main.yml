@@ -3,7 +3,7 @@ name: MERN Test Pipeline
 on: [push, pull_request]
 
 env:
-  DOCKERHUB_USERNAME: ${{ vars.akshathaa16 }}
+  DOCKERHUB_USERNAME: ${{ vars.DOCKERHUB_USERNAME }}
   IMAGE_PREFIX: swiftbites
 
 jobs:
@@ -66,14 +66,14 @@ jobs:
     - name: Login to DockerHub
       uses: docker/login-action@v3
       with:
-        username: ${{ vars.akshathaa16}}
-        password: ${{ secrets.dckr_pat_h4VtFbQcC3ZTBe7pGUr1Ee7H3Yo }}
+        username: ${{ vars.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
     
     - name: Build and push
       uses: docker/build-push-action@v5
       with:
         context: ./${{ matrix.project }}
         push: true
-        tags: ${{ vars.akshathaa16 }}/${{ env.IMAGE_PREFIX }}-${{ matrix.project }}:latest,${{ vars.akshathaa16 }}/${{ env.IMAGE_PREFIX }}-${{ matrix.project }}:${{ github.sha }}
-        cache-from: type=registry,ref=${{ vars.akshathaa16 }}/${{ env.IMAGE_PREFIX }}-${{ matrix.project }}:buildcache
-        cache-to: type=registry,ref=${{ vars.akshathaa16 }}/${{ env.IMAGE_PREFIX }}-${{ matrix.project }}:buildcache,mode=max
+        tags: ${{ vars.DOCKERHUB_USERNAME }}/${{ env.IMAGE_PREFIX }}-${{ matrix.project }}:latest,${{ vars.DOCKERHUB_USERNAME }}/${{ env.IMAGE_PREFIX }}-${{ matrix.project }}:${{ github.sha }}
+        cache-from: type=registry,ref=${{ vars.DOCKERHUB_USERNAME }}/${{ env.IMAGE_PREFIX }}-${{ matrix.project }}:buildcache
+        cache-to: type=registry,ref=${{ vars.DOCKERHUB_USERNAME }}/${{ env.IMAGE_PREFIX }}-${{ matrix.project }}:buildcache,mode=max
