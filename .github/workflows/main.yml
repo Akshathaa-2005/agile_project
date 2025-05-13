@@ -73,6 +73,7 @@ jobs:
       with:
         context: ./${{ matrix.project }}
         push: true
+        platforms: linux/amd64,linux/arm64
         tags: akshathaa16/${{ env.IMAGE_PREFIX }}-${{ matrix.project }}:latest
         cache-from: type=registry,ref=akshathaa16/${{ env.IMAGE_PREFIX }}-${{ matrix.project }}:buildcache
         cache-to: type=registry,ref=akshathaa16/${{ env.IMAGE_PREFIX }}-${{ matrix.project }}:buildcache,mode=max
