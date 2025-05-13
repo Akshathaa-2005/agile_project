@@ -1,7 +1,6 @@
 services:
   frontend:
     image: akshathaa16/swiftbites-frontend:latest
-    platform: linux/amd64
     ports:
       - "5173:5173"
     depends_on:
@@ -14,18 +13,17 @@ services:
 
   backend:
     image: akshathaa16/swiftbites-backend:latest
-    platform: linux/amd64
     ports:
       - "4000:4000"
     environment:
       - PORT=4000
       - MONGODB_URI=mongodb+srv://aj7301925:kX4OaZwnDKVrOIB0@cluster0.9zivhnj.mongodb.net/food-del
+      - JWT_SECRET=your_jwt_secret_key_here
     networks:
       - swiftbites-network
 
   admin:
     image: akshathaa16/swiftbites-admin:latest
-    platform: linux/amd64
     ports:
       - "5174:5173"
     depends_on:
@@ -39,4 +37,3 @@ services:
 networks:
   swiftbites-network:
     driver: bridge
-
